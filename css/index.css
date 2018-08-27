@@ -1,0 +1,291 @@
+ @charset "UTF-8";
+/* 总体布局 */
+.main-box
+{
+    height: 100%;
+    padding-top: 6px;
+}
+.left {
+    width: 25%;
+    height: 100%;
+    float: left;
+}
+.middle {
+    height: 100%;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.right {
+    height: 100%;
+    width: 25%;
+    float: right;
+    position: relative;
+}
+/* 左边 排行榜盒子 */
+.rank-box{
+    width: 90%;
+    height: 32%;
+    border: 1px dotted grey;
+    margin: 6px auto;
+    margin-top: 0px;
+    padding: 10px 12%;
+    overflow-y: scroll;
+}
+.rank-table{    
+    width: 100%;
+    /* height: 80%; */
+    overflow: scroll;
+    padding: 0px 10px;
+    /* 该属性使td宽度可设置 */
+    table-layout: fixed;
+    font-size: 14px;
+    font-size: 0.875rem;
+}
+.rank-table .rank-title {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-size: 1.125rem;
+    margin-bottom: 6px;
+    color: #333;
+}
+.rank-table .rank-row{
+    width: 100%;
+    height: 20px;
+} 
+.rank-table .rank-row:hover{
+    color: #000;
+}
+/* td 不能设置margin,能设置padding */
+.rank-row td{
+    padding: 4px 0px;
+}
+.rank-table .sequence {
+    width: 12px;
+    text-align: center; 
+    border-radius: 50%;
+} 
+.rank-table .top-one,
+.rank-table .top-two,
+.rank-table .top-three
+{
+    color: #FF4E00;
+} 
+.rank-table .name-box {
+    padding-left: 4px;
+    cursor: pointer;
+    width: 70%;
+    position: relative;
+}
+.rank-table .name {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.rank-table .full-name {
+    position: absolute;
+    z-index: 5;
+    top: -80%;
+    left: 0px;
+    /* width:  150%; */
+    padding: 2px 3px;
+    background: #fff;
+    white-space: nowrap;
+    color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 6px grey;   
+    border-radius: 3px;
+    display: none;
+}
+.rank-table .full-name::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: calc(50% - 4px);
+    border-top: 6px solid #fff;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+ 
+.name-box:hover .full-name{
+    display: block;
+    
+}
+.rank-table .amount {
+    width:40%;
+    text-align: right;
+}
+/* 中部展示区 */
+.middle .m-top
+{
+    width: 100%;
+    height: 25%;
+    margin-bottom: 6px;
+    
+    /* border: 1px dotted grey; */
+    position: relative;
+}
+/* 日期 */
+.calendar
+{
+    float: left;
+    height: 100%;
+    width: 40%;
+    position: relative;
+    text-align: center;
+    border:1px dotted grey;
+} 
+.calendar .container
+{
+    position: absolute;
+    top:30%;
+    right:24%;
+}
+.calendar .time
+{
+    font-size: 36px;
+    font-size: 2.25rem;
+    margin-bottom: 10px;  
+    color: #333;
+}
+.calendar .date
+{
+    font-size: 12px;
+    font-size: 0.75rem;
+}
+/* 销量汇总 */
+.sales-box
+{
+    width: 60%;
+    float: left;
+    height: 100%;
+    border: 1px dotted gray;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.sales-hd
+{
+    text-align: center;
+    padding-left: 20px;
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 48px;  
+    line-height: 3rem;  
+    height: 40px;
+    height: 2.5rem;  
+}
+.sales-bd  
+{
+    float: left;
+    width: 50%;
+    /* height: 50%; */
+    padding: 10px;
+    padding-left:12%;
+    border-right: 1px dotted grey;
+}
+.sales-bd:nth-of-type(2)
+{
+    border-right: 0px;
+}
+.sales-bd .summary-title
+{
+    /* height: 20%; */
+    /* color: #666;
+    font-size: 12px;
+    font-size:0.75rem;
+    font-weight: normal; */
+    color: #666;
+    font-size: 12px;
+    font-size: 0.75rem;
+    font-weight: normal;
+    /* height: 1.5rem;
+    line-height: 1.5rem; */
+}
+.sales-bd p
+{
+    /* height: 1.5rem; */
+    font-size: 18px;
+    font-size: 1.125rem;
+    /* color: #c10000; */
+    color: #dd4035;
+}
+.sales-bd .unit{
+    color: #666;
+}
+.middle .m-bottom
+{
+    width: 100%;
+    height: 72%;
+    border: 1px dotted grey;
+}
+/* 右边图表盒子 */
+.right .charts-box
+{
+    width: 90%;
+    height: 32%;
+    margin: 6px auto;
+    margin-top: 0px;
+    border: 1px dotted grey;
+}
+.switch-box{
+    position: absolute;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    top: 0px;
+    right: 0px;
+    background-color: #ffffff;
+    border: 1px solid rgba(0,0,0,.3);
+}
+#screen-switch{
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size: 100% 100%;
+}
+.switch-box .fscreen-open{
+    background-image: url(../imgs/fullscreen-open.svg);
+    opacity: 0.6;
+}
+.switch-box .fscreen-open:hover{
+    opacity: 1;
+}
+.switch-box .fscreen-exit{
+    background-image: url(../imgs/fullscreen-exit.svg);
+    opacity: 0.6;
+}
+.switch-box .fscreen-exit:hover{
+    opacity: 1;
+}
+.switch-box .imply-txt{
+    opacity: 0;
+    position: absolute;
+    top: 110%;
+    right: 0px;
+    font-size: 12px;
+    width: 54px;
+    height: 20px;
+    color: rgb(255, 255, 255);
+    line-height: 1.5em;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 2px;
+    padding: 0px 2px;
+    transition: .2s;
+}
+.switch-box .imply-txt::before
+{
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top: -4px;
+    left: calc(50% - 2px);
+    border-bottom:4px dotted rgba(0, 0, 0, 0.5); 
+    border-right:4px solid transparent; 
+    border-left:4px solid transparent; 
+}
