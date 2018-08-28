@@ -1,4 +1,4 @@
- @charset "UTF-8";
+﻿ @charset "UTF-8";
 /* 总体布局 */
 .main-box
 {
@@ -22,7 +22,7 @@
     float: right;
     position: relative;
 }
-/* 左边 排行榜盒子 */
+/* 左边  排行榜盒子*/
 .rank-box{
     width: 90%;
     height: 32%;
