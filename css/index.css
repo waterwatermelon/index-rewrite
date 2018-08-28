@@ -4,6 +4,7 @@
 {
     height: 100%;
     padding-top: 6px;
+    background: #fff;
 }
 .left {
     width: 25%;
@@ -172,20 +173,19 @@
 .sales-hd
 {
     text-align: center;
-    
     font-size: 18px;
     font-size: 1.125rem;
-    line-height: 32px;  
-    line-height: 2rem;  
-    height: 32px;
-    height: 2rem;  
-    margin-top: 4%;
+    height: 24px;
+    height: 1.rem;  
+    margin: 4% 30% 2%;
+    color: #fff;
+    background: #607d8d;
+    border-radius: 1.75rem;
 }
 .sales-bd  
 {
     float: left;
     width: 50%;
-    /* height: 50%; */
     padding: 10px;
     padding-left:12%;
     border-right: 1px dotted grey;
