@@ -30,8 +30,8 @@
     border: 1px dotted grey;
     margin: 6px auto;
     margin-top: 0px;
-    padding: 10px 12%;
-    overflow-y: scroll;
+    padding: 20px 12%;
+    /* overflow-y: scroll; */
 }
 .rank-table{    
     width: 100%;
@@ -48,12 +48,10 @@
     text-align: center;
     font-size: 18px;
     font-size: 1.125rem;
-    margin-bottom: 6px;
+    margin-bottom: 12px;
     color: #fff;
     border-radius: 16px;
     border-radius: 1rem;
-    background: rgb(45 , 60, 80);
-   
     background:#607D8B;
 }
 .rank-table .rank-row{
@@ -146,19 +144,36 @@
 {
     position: absolute;
     top:30%;
-    right:24%;
+    right:12%;
 }
 .calendar .time
 {
+    position: relative;
     font-size: 36px;
     font-size: 2.25rem;
     margin-bottom: 10px;  
     color: #333;
+    padding-left: 4.5rem;;
+}
+.calendar .time::before{
+    content: '';
+    width: 72px;
+    width: 4.5rem;
+    height:  72px;
+    height:  4.5rem;
+    top: 0px;
+    left: 0px;
+    background: url(../imgs/clock.svg) no-repeat ;
+    background-size: 100% 100%;
+    position: absolute;
 }
 .calendar .date
 {
     font-size: 12px;
     font-size: 0.9rem;
+    position: absolute;
+    bottom: -1rem;
+    right: 0px;
 }
 /* 销量汇总 */
 .sales-box
@@ -167,8 +182,6 @@
     float: left;
     height: 100%;
     border: 1px dotted gray;
-    overflow-y: scroll;
-    overflow-x: hidden;
 }
 .sales-hd
 {
@@ -176,7 +189,9 @@
     font-size: 18px;
     font-size: 1.125rem;
     height: 24px;
-    height: 1.rem;  
+    height: 1.75rem; 
+    line-height: 24px;
+    line-height: 1.75rem;
     margin: 4% 30% 2%;
     color: #fff;
     background: #607d8d;
