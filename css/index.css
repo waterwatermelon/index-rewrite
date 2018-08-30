@@ -12,12 +12,14 @@
     float: left;
 }
 .middle {
-    height: 100%;
+    height: 98%;
     width: 50%;
     margin-left: 25%;
     margin-right: 25%;
-    border-left:1px  dotted grey ;
-    border-right:1px  dotted grey ;
+    border-left:1px solid #607d8b;
+    border-right:1px solid #607d8b;
+    padding:0px 16px;
+   
 }
 .right {
     height: 100%;
@@ -31,31 +33,40 @@
     width: 90%;
     height: 32%;
     margin: 0px auto 6px;
-    padding: 20px 12%;
-    border: 3px solid grey;
+    padding: 20px 12%;   
+    background:rgb(249,250,250);
+    /*
+    border: 2px solid grey;
     background: rgba(96, 125, 139, 0.04);
+    background: rgba(224,236, 255, 0.3);
+    */
+	box-shadow: 0 0 2px #607d8b;
 }
 .rank-box::before{
+	/*
     content: '';
+    */
     position: absolute;
-    top: -3px;
-    left: 12px;
+    top: -2px;
+    left: 18px;
     /* z-index: -1; */
-    width: calc(100% - 24px);
+    width: calc(100% - 36px);
     height: 100%;
-    border-top: 3px double #fff;
-    border-bottom: 3px double #fff;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
 }
 .rank-box::after{
+	/*
     content: '';
+    */
     position: absolute;
     top: 12px;
-    left: -3px;
+    left: -2px;
     /* z-index: 1; */
     width: 100%;
     height: calc(100% - 24px);
-    border-left: 3px double #fff;
-    border-right: 3px double #fff;;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #fff;;
 }
 .rank-table{    
     position: relative;
@@ -84,8 +95,10 @@
 } 
 .rank-table .rank-row:hover{
     color: #000;
-    /* background: rgba(174, 241, 255, .31); */
-    background: rgba(96, 125, 139, 0.1);
+    /* background: rgba(96, 125, 139, 0.1);     
+    background: rgb(224, 236, 255);
+    */
+    background: rgba(201, 221, 230, 0.3);
 }
 /* td 不能设置margin,能设置padding */
 .rank-row td{
@@ -153,7 +166,9 @@
     height: 25%;
     margin-bottom: 6px;
     position: relative;
-    background: rgba(96, 125, 139, 0.04);
+    
+	background: rgb(249, 250, 250);
+    box-shadow: 0 0 2px #607d8d;
 }
 /* 日期 */
 .calendar
@@ -163,6 +178,7 @@
     width: 40%;
     position: relative;
     text-align: center;
+    border: 0px;/*兼容easyui的calendar */
     /* background: rgba(96, 125, 139, 0.04); */
     /* background: rgba(174, 241, 255, .31); */
     /* border: 3px solid gray; */
@@ -280,7 +296,8 @@
     width: 50%;
     padding: 10px;
     padding-left:12%;
-    border-right: 1px dotted grey;
+    /* border-right: 1px dotted grey; */
+    border-right: 2px solid rgb(255, 255, 255);
 }
 .sales-bd:nth-of-type(2)
 {
@@ -343,12 +360,18 @@
     height: 32%;
     margin: 6px auto;
     margin-top: 0px;
+    /*
     border: 3px solid grey;
-    /* background: rgba(96, 125, 139, 0.04); */
+     background: rgba(96, 125, 139, 0.04); 
+    */
+    box-shadow: 0 0 2px #607d8b;
 }
 
 .right .charts-box::before{
+	/*
+	
     content: '';
+	*/
     position: absolute;
     top: -3px;
     left: 12px;
@@ -359,7 +382,10 @@
     border-bottom: 3px double #fff;
 }
 .right .charts-box::after{
+	/*
+	
     content: '';
+	*/
     position: absolute;
     top: 12px;
     left: -3px;
