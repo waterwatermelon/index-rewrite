@@ -1,4 +1,4 @@
-//除e-chart图表外的脚本代码
+W//除e-chart图表外的脚本代码
 $(function(){
     // 显示时钟
     function showDate() {
@@ -7,13 +7,14 @@ $(function(){
         function updateCalendar() {
             var time = new Date();
             var day = ['日', '一', '二', '三', '四', '五', '六'];
+            // var day = ['Sun.','Mon.','Tues.','Wed.','Thur.','Fri.','Sat.'];
             // 程序计时的月从0开始取值后+1
             var m = time.getMonth() + 1;
             var timeStr = toTwoDigit(time.getHours()) + ":"
                 + toTwoDigit(time.getMinutes()) + ":" + toTwoDigit(time.getSeconds());
             var dateStr = toTwoDigit(time.getFullYear()) + "-" + toTwoDigit(m) + "-"
                 + toTwoDigit(time.getDate()) + "  |  "
-                + "星期" + day[time.getDay()];
+                +"星期" + day[time.getDay()];
             oTime.innerText = timeStr;
             oDate.innerHTML = dateStr;
             function toTwoDigit(num) {
@@ -55,7 +56,7 @@ $(function(){
         }
         //退出全屏
         else {
-            console.log(' exit full Screen');
+            console.log('exit full Screen');
             if (document.exitFullscreen) {
                 document.exitFullscreen();
             } else if (document.mozCancelFullScreen) {
@@ -78,6 +79,6 @@ $(function(){
     }
     // 全屏按钮 监听事件注册
     $('#switch-box').click(screenSwitch);
-    $('#switch-box').mouseover(showImply);
-    $('#switch-box').mouseout(closeImply);
+   $('#switch-box').mouseover(showImply);
+   $('#switch-box').mouseout(closeImply);
 });
