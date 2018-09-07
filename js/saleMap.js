@@ -1,4 +1,4 @@
-W//除e-chart图表外的脚本代码
+//除e-chart图表外的脚本代码
 $(function(){
     // 显示时钟
     function showDate() {
