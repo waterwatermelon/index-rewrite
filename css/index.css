@@ -4,7 +4,14 @@
 {
     height: 100%;
     padding-top: 6px;
-    background: #fff;
+    background:rgb(4, 8, 15);
+    filter: brightness(1);
+}
+#myCanvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -5;
 }
 .left {
     width: 25%;
@@ -16,8 +23,7 @@
     width: 50%;
     margin-left: 25%;
     margin-right: 25%;
-    border-left:1px solid #607d8b;
-    border-right:1px solid #607d8b;
+    border-left:1px solid rgb(32, 83,111);
     padding:0px 16px;
 }
 .right {
@@ -33,8 +39,53 @@
     height: 32%;
     margin: 0px auto 6px;
     padding: 20px 12%;   
-    background:rgb(249,250,250);
-	box-shadow: 0 0 2px #607d8b;
+    /* border-bottom: 3px double rgb(32, 83, 111); */
+   
+}
+.rank-box:nth-child(3){
+    border: 0px;
+}
+/* 画排行榜盒子边框 */
+.rank-box::before{
+    content: '';
+    position: absolute;
+    top: 1.8rem;
+    left: 6%;
+    width: 90%;
+    height: 80%; 
+    border: 1px solid rgb(32,83,111);
+    box-shadow: inset 0px 0px 32px rgba(30, 99, 124, 0.8)
+}
+
+.rank-box .rank-title {
+    position: relative;
+    width: 70%;
+    top: 0rem;
+    left: 13%;
+    margin-bottom: 2rem;
+    font-size: 18px;
+    font-size: 1.125rem;
+    font-weight: normal;
+    text-align: center;
+    color: rgb(27, 216, 216);
+    background: rgba(34, 81, 111, 0.5);
+    border-left: 1px solid rgb(32, 83, 111);
+    border-right: 1px solid rgb(32, 83, 111);
+}
+/* 画竖线*/
+.rank-box .rank-title::before{
+    content: '|';
+    position: absolute;
+    left: -0.5rem;
+    font-size: 1rem;
+    color: rgb(32, 83, 111);
+}
+.rank-box .rank-title::after{
+    content: '|';
+    position: absolute;
+    right: -0.5rem;
+    font-size: 1rem;
+    color: rgb(32, 83, 111);
 }
 .rank-table{    
     position: relative;
@@ -45,25 +96,17 @@
     table-layout: fixed;
     font-size: 14px;
     font-size: 0.875rem;
-}
-.rank-table .rank-title {
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
-    font-size: 1.125rem;
-    margin-bottom: 12px;
     color: #fff;
-    /* border-radius: 16px;
-    border-radius: 1rem; */
-    background:#607D8B;
 }
 .rank-table .rank-row{
     width: 100%;
     height: 20px;
 } 
+.rank-table .rank-row:nth-child(odd){
+    background:rgba(11, 104, 162, 0.4);
+} 
 .rank-table .rank-row:hover{
-    color: #000;
-    background: rgba(201, 221, 230, 0.3);
+    background: rgba(11, 104, 162, 0.5);
 }
 /* td 不能设置margin,能设置padding */
 .rank-row td{
@@ -72,18 +115,14 @@
 .rank-table .sequence {
     width: 12px;
     text-align: center; 
-} 
-.rank-table .top-one,
-.rank-table .top-two,
-.rank-table .top-three
-{
-    color: #FF4E00;
+    color: rgb(82, 182, 203);   
 } 
 .rank-table .name-box {
     padding-left: 4px;
     cursor: pointer;
     width: 70%;
     position: relative;
+    color: rgb(82, 182, 203);
 }
 .rank-table .name {
     display: block;
@@ -91,6 +130,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: rgb(82, 182, 203);
 }
 .rank-table .full-name {
     position: absolute;
@@ -98,10 +138,10 @@
     top: -80%;
     left: 0px;
     padding: 2px 4px;
-    background:rgba(0, 0, 0, .7);
-    color: #fff;
+    color: rgb(255, 255, 255);
+    background: #1b293c;
     white-space: nowrap;
-    box-shadow: 0px 0px 6px grey;   
+    box-shadow: 0px 0px 6px #124871;
     border-radius: 3px;
     display: none;
 }
@@ -111,16 +151,18 @@
     position: absolute;
     top: 100%;
     left: calc(50% - 4px);
-    border-top: 6px solid rgba(0, 0, 0, .7);
+    border-top: 6px solid rgba(255, 255, 255, 0.8);
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
 }
+/* 
 .name-box:hover .full-name{
     display: block;
-}
+} */
 .rank-table .amount {
     width:40%;
     text-align: right;
+    color: #fdf97c;
 }
 /* 中部展示区 */
 .middle .m-top
@@ -129,8 +171,6 @@
     height: 25%;
     margin-bottom: 6px;
     position: relative;
-	background: rgb(249, 250, 250);
-    box-shadow: 0 0 2px #607d8d;
 }
 /* 日期 */
 .calendar
@@ -140,21 +180,24 @@
     width: 40%;
     position: relative;
     text-align: center;
-    border: 0px;/*清除easyui自带的calendar样式 */
+    border: 0px;/*兼容easyui的calendar */
+    color: #25ffff;
+
 } 
-.calendar::after{
-    content: '';
-    position: absolute;
-    top: 16px;
-    left: -3px; 
-    width: 100%;
-    height: calc(100% - 32px); 
-}
+
 .calendar .container
 {
     position: absolute;
-    top:30%;
-    right:12%;
+    padding:10%; 
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto auto;
+    height: 9rem;
+    border-radius: 1px;
+    border: 1px solid rgb(32,83,111);
+    box-shadow: inset 0px 0px 20px rgba(30, 99, 124, 0.8);
 }
 .calendar .time
 {
@@ -162,28 +205,26 @@
     font-size: 36px;
     font-size: 2.25rem;
     margin-bottom: 10px;  
-    color: #333;
-    padding-left: 4.5rem;;
+    /* padding-left: 4.8rem;; */
 }
 .calendar .time::before{
-    content: '';
+    /* content: ''; */
     width: 72px;
     width: 4.5rem;
     height: 72px;
     height: 4.5rem;
     top: 0px;
     left: 0px;
-    background: url(../imgs/clock.svg) no-repeat ;
+    background:url(../imgs/clock.svg) no-repeat;
     background-size: 100% 100%;
     position: absolute;
 }
 .calendar .date
 {
     font-size: 12px;
-    width: 56%;
-    font-size: 0.8rem;
-    position: absolute;
-    right: 0px;
+    font-size: 0.8rem; 
+    color: #21dfdf;
+    
 }
 /* 销量汇总 */
 .sales-box
@@ -194,22 +235,25 @@
     height: 100%;
 }
  
-.sales-box::after{
+.sales-box::before{
     content: '';
     position: absolute;
-    top: 8px;
-    left: -3px;
+    top: 16%;
     width: 100%;
-    height: calc(100% - 16px);
-    border-left: 1px dashed rgb(192, 192, 192);
+    height: 74%;
+    border: 1px solid rgb(32,83,111);
+    box-shadow:inset 0px 0px 2px rgb(32,83,111);
+    border-radius: 1px;
+    border: 1px solid rgb(32,83,111);
+    box-shadow: inset 0px 0px 32px rgba(30, 99, 124, 0.8);
 }
 .sales-hd
 {
-    position: absolute;
+    position: absolute; 
     top: 10%;
     left: 0;
     right: 0;
-    width: 72%;
+    width: 28%;
     margin: 0 auto;
     text-align: center;
     font-size: 18px;
@@ -218,9 +262,20 @@
     height: 1.5rem; 
     line-height: 24px;
     line-height: 1.5rem;
-    color: #fff;
-    background: #607d8d;
-    border: 1px solid gray;
+    color: rgb(27, 216, 216);
+    background: rgba(60, 200, 250, 0.3);
+} 
+.sales-hd::after{
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: #142132;
 }
 .sales-bd  
 {
@@ -230,9 +285,10 @@
     width: 50%;
     height: 60%;
     padding-left:12%;
-    border-right: 1px dashed rgb(177, 177, 177);
-}
+    border-right: 1px solid rgb(32,83,111);
+    color: #fff;
 
+}
 .sales-bd:nth-of-type(2)
 {
     border-right: 0px;
@@ -240,20 +296,33 @@
 }
 .sales-bd .summary-title
 { 
-    color: #666;
     font-size: 14px;
     font-size: 0.875rem;
     font-weight: normal; 
+    color: #5ef1f8;
 }
 .sales-bd p
 { 
+    position: relative;
     font-size: 20px;
     font-size: 1.25rem;
     color: #dd4035;
+    color:rgb(253,249,149);
     line-height: 20px;
 }
+.sales-bd p::after{
+    content: '­­­·';
+    position: absolute;
+    right: -0.5rem;
+    font-size: 48px;
+    font-size: 3rem;
+    color: rgb(253,249,149);
+}
+.sales-bd:nth-of-type(2) p::after{
+    content: ' ';
+}
 .sales-bd .unit{
-    color: #666;
+    color: #fff;
     font-size: 1rem;
     font-size: 1rem; 
 }
@@ -261,7 +330,6 @@
 {   
     width: 100%;
     height: 72%;
-    background: rgba(96, 125, 139, 0.04); 
 }
 /* 右边图表盒子 */
 .right .charts-box
@@ -270,8 +338,55 @@
     width: 90%;
     height: 32%;
     margin: 6px auto;
-    margin-top: 0px;
-    box-shadow: 0 0 2px #607d8b;
+    margin-top: 0px;  
+    padding-top:20px;
+    padding-top:1.25rem;
+    /* border: 1px solid rgb(32,83,111); */
+    /* box-shadow: inset 0px 0px 32px rgba(30, 99, 124, 0.8); */
+}
+.right .charts-box::before{
+    content: '';
+    position: absolute;
+    top: 1.8rem;
+    width: 100%;
+    height: 93%; 
+    border: 1px solid rgb(32,83,111);
+    box-shadow: inset 0px 0px 32px rgba(30, 99, 124, 0.8)
+}
+.charts-box .chart-title{
+   
+    position: relative;
+    width: 70%;
+    top: 0rem;
+    left: 15%;
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-size: 1.125rem;
+    font-weight: normal;
+    text-align: center;
+    color: rgb(27, 216, 216);
+    background: rgba(34, 81, 111, 0.5);
+    border-left: 1px solid rgb(32, 83, 111);
+    border-right: 1px solid rgb(32, 83, 111);
+}
+/* 画竖线*/
+.charts-box .chart-title::before{
+    content: '|';
+    position: absolute;
+    left: -0.5rem;
+    font-size: 1rem;
+    color: rgb(32, 83, 111);
+}
+.charts-box .chart-title::after{
+    content: '|';
+    position: absolute;
+    right: -0.5rem;
+    font-size: 1rem;
+    color: rgb(32, 83, 111);
+}
+.charts-box .chart {
+    width: 100%;
+    height: 90%;
 }
 .switch-box{
     position: absolute;
@@ -279,10 +394,10 @@
     width: 36px;
     height: 36px;
     top: 0px;
-    /* right: 0px; */
-    right: 5%;
-    background-color: #ffffff;
-    border: 1px solid rgba(0,0,0,.3);
+    right: 0px;
+    border: 1px solid rgb(47, 120, 160);
+    box-shadow: 0px 0px 32px rgba(30, 99, 124, 0.8);
+    border-radius: 2px;
 }
 #screen-switch{
     display: block;
@@ -295,14 +410,12 @@
 }
 .switch-box .fscreen-open{
     background-image: url(../imgs/fullscreen-open.svg);
-    opacity: 0.6;
 }
 .switch-box .fscreen-open:hover{
     opacity: 1;
 }
 .switch-box .fscreen-exit{
     background-image: url(../imgs/fullscreen-exit.svg);
-    opacity: 0.6;
 }
 .switch-box .fscreen-exit:hover{
     opacity: 1;
@@ -312,15 +425,13 @@
     position: absolute;
     top: 110%;
     right: 0px;
-    width: 62px;
-    height: 20px;
-    padding: 0px 2px;
-    color: rgb(255, 255, 255);
     font-size: 12px;
+    width: 54px;
+    height: 20px;
+    color: rgb(0, 0, 0);
     line-height: 1.5em;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.7);
     border-radius: 2px;
+    padding: 0px 2px;
     transition: .2s;
 }
 .switch-box .imply-txt::before
@@ -330,8 +441,8 @@
     width: 0px;
     height: 0px;
     top: -4px;
-    right: 24%;
-    border-bottom:4px solid rgba(0, 0, 0, 0.5); 
+    left: calc(50% - 2px);
+    border-bottom:4px dotted rgba(0, 0, 0, 0.5); 
     border-right:4px solid transparent; 
     border-left:4px solid transparent; 
 }

@@ -1,7 +1,7 @@
 
 // 基于准备好的dom，初始化echarts实例
 $(function () {
-	var myChart = echarts.init(document.getElementById('main'))
+    var myChart = echarts.init(document.getElementById('main'))
     var geoCoordMap = {
         '海门': [121.15, 31.89],
         '鄂尔多斯': [109.781327],
@@ -254,7 +254,7 @@ $(function () {
             symbolSize: 8,
             itemStyle: {
                 normal: {
-                    color: 'green',
+                    color: 'blue',
                     borderColor: 'white'
                 }
             }
@@ -264,21 +264,26 @@ $(function () {
 
     var planePath = 'arrow';
     option = {
-        backgroundColor: '#fff',
+        backgroundColor: 'transport',
+        //标题设置
         title: {
             text: '售货机各省销售情况',
             left: 'center',
             top: '10px',
+            textStyle: {
+                color: 'rgb(27, 216, 216)' 
+            },
             itemStyle: {
                 normal: {
                     borderColor: 'rgba(100,149,237,1)',
                     borderWidth: 0.5,
                     areaStyle: {
-                        color: '#1b1b1b'
+                        color: '#000'
                     }
                 }
             }
         },
+        //工具提示
         tooltip: {
             trigger: 'item',
             formatter: function (v) {
@@ -305,13 +310,17 @@ $(function () {
             itemStyle: {
                 normal: {
                     //地图颜色
-                    areaColor: '#DEDEDE',//#37376e
-                    borderColor: '#000'
+                    areaColor: 'rgba(14, 128, 199,0.01)',//#37376e
+                    borderColor: 'rgb(14, 128, 199)',
+                    shadowColor: 'rgba(36, 253, 253,0.5)',
+                    shadowBlur: 6 
                 },
                 emphasis: {
                     //show要设置成false才能设置高亮部分的颜色
                     show: true,
-                    areaColor: '#FFA07A'
+                    areaColor: 'rgb(20,37, 54)',
+                    borderColor: 'rgb(100, 200, 255)', 
+                    shadowBlur: 0
                 }
             }
         },
@@ -331,191 +340,219 @@ $(function () {
                 }
             },
             symbolSize: 8,
+            //波纹
             itemStyle: {
                 normal: {
-                    color: 'green',
+                    color: 'rgb(14, 128, 199)',
                     borderColor: 'white'
                 }
             },
-            data: formtVData(geoCoordMap, data, '福州')
+            data: formtVData(geoCoordMap, data, ' ')
         }]
     };
     myChart.setOption(option);
-	//简单柱状图
-	var myChart1 = echarts.init(document.getElementById('main1'))
-	// 指定图表的配置项和数据
-	var option1 = {
-		title: {
-			text: ''
-		},
-		tooltip: {},
-		legend: {
-			data: ['销量']
-		},
-		xAxis: {
-			data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
-			//不自动隐藏横坐标名
-			axisLabel: {
-				interval: 0
-			}
-		},
-		yAxis: {},
-		series: [{
-			name: '销量',
-			type: 'bar',
-			data: [5, 20, 36, 10, 10, 20],
-			label: {
-				normal: {
-					textStyle: {
-						fontSize: 10
-					}
-				}
-			}
-		}]
-	};
-	// 使用刚指定的配置项和数据显示图表。
-	myChart1.setOption(option1);
+    //简单柱状图
+    var myChart1 = echarts.init(document.getElementById('main1'))
+    // 指定图表的配置项和数据
+    var option1 = {
+        title: {
+            text: ''
+        },
+        tooltip: {},
+        legend: {
+            data: ['销量'],
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        xAxis: {
+            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+            //不自动隐藏横坐标名
+            axisLine: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisLabel: {
+                interval: 0,
+                textStyle: {
+                    color: '#fff'
+                }
+            }
+        },
+        yAxis: {
+            axisLine: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisLabel: {
+                interval: 0,
+                textStyle: {
+                    color: '#fff'
+                }
+            }
+        },
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20],
+            label: {
+                normal: {
+                    textStyle: {
+                        fontSize: 10
+                    }
+                }
+            }
+        }]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart1.setOption(option1);
+    //南丁格尔图（饼状图
+    var myChart2 = echarts.init(document.getElementById('main2'))
+    option2 = {
+        backgroundColor: 'transport',
+        series: [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius: '55%',
+                data: [
+                    { value: 235, name: '视频广告' },
+                    { value: 274, name: '联盟广告' },
+                    { value: 310, name: '邮件营销' },
+                    { value: 335, name: '直接访问' },
+                    { value: 400, name: '搜索引擎' }
+                ],
+                roseType: 'angle',
+                label: {
+                    normal: {
+                        textStyle: {
+                            color: '#fff',
+                            fontSize: 9
+                        },
+                        formatter: '{b}\n{d}%'
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: '#fff'
+                        },
+                        length: 0.001
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        shadowBlur: 50,
+                        shadowColor: 'rgba(0,0,0,0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    myChart2.setOption(option2);
 
-	//南丁格尔图（饼状图
-	var myChart2 = echarts.init(document.getElementById('main2'))
-	option2 = {
-		backgroundColor: 'rgb(255,255,255)',
-		series: [
-			{
-				name: '访问来源',
-				type: 'pie',
-				radius: '55%',
-				data: [
-					{ value: 235, name: '视频广告' },
-					{ value: 274, name: '联盟广告' },
-					{ value: 310, name: '邮件营销' },
-					{ value: 335, name: '直接访问' },
-					{ value: 400, name: '搜索引擎' }
-				],
-				roseType: 'angle',
-				label: {
-					normal: {
-						textStyle: {
-							color: 'rgb(0, 0, 0)',
-							fontSize: 8
-						},
-						formatter: '{b}\n{d}%'
-
-					}
-				},
-				labelLine: {
-					normal: {
-						lineStyle: {
-							color: 'rgb(0,0,0)'
-						},
-						length: 0.001
-					}
-				},
-				itemStyle: {
-					normal: {
-						shadowBlur: 50,
-						shadowColor: 'rgba(0,0,0,0.5)'
-					}
-				}
-			}
-		]
-	};
-	myChart2.setOption(option2);
-	//TODO:当浏览器大小发生改变时，图表自动改变高度
-	// window.onresize = myChart2.resize;
-	//折线图
-	var myChart3 = echarts.init(document.getElementById('main3'))
-	var colors = ['#5793f3', '#d14a61', '#675bba'];
-	option3 = {
-		color: colors,
-
-		tooltip: {
-			trigger: 'none',
-			axisPointer: {
-				type: 'cross'
-			}
-		},
-		legend: {
-			data: ['2017 销售量', '2018 销售量']
-		},
-		grid: {
-			top: 80,
-			bottom: 50
-		},
-		xAxis: [
-			{
-				type: 'category',
-				axisTick: {
-					alignWithLabel: true
-				},
-				axisLine: {
-					onZero: false,
-					lineStyle: {
-						color: colors[1]
-					}
-				},
-				axisPointer: {
-					label: {
-						formatter: function (params) {
-							return '销售量  ' + params.value
-								+ (params.seriesData.length ? '：' + params.seriesData[0].data : '');
-						}
-					}
-				},
-				data: ["2017-1", "2017-2", "2017-3", "2017-4", "2017-5", "2017-6", "2017-7", "2017-8", "2017-9", "2017-10", "2017-11", "2017-12"]
-			},
-			{
-				type: 'category',
-				axisTick: {
-					alignWithLabel: true
-				},
-				axisLine: {
-					onZero: false,
-					lineStyle: {
-						color: colors[0]
-					}
-				},
-				axisPointer: {
-					label: {
-						formatter: function (params) {
-							return '销售量  ' + params.value
-								+ (params.seriesData.length ? '：' + params.seriesData[0].data : '');
-						}
-					}
-				},
-				data: ["2018-1", "2018-2", "2018-3", "2018-4", "2018-5", "2018-6", "2018-7", "2018-8", "2018-9", "2018-10", "2018-11", "2018-12"]
-			}
-		],
-		yAxis: [
-			{
-				type: 'value'
-			}
-		],
-		series: [
-			{
-				name: '2018 销售量',
-				type: 'line',
-				xAxisIndex: 1,
-				smooth: true,
-				data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-			},
-			{
-				name: '2017 销售量',
-				type: 'line',
-				smooth: true,
-				data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7]
-			}
-		]
-	};
-	//显示
+    //折线图
+    var myChart3 = echarts.init(document.getElementById('main3'))
+    var colors = ['#aaffff','#3f92d2', '#d14a61', '#5793f3'];
+    option3 = {
+        color: colors,
+        tooltip: {
+            trigger: 'none',
+            axisPointer: {
+                type: 'cross'
+            }
+        },
+        legend: {
+            data: ['2017 销售量', '2018 销售量'],
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        grid: {
+            top: 80,
+            bottom: 50
+        },
+        xAxis: [
+            {
+                type: 'category',
+                axisTick: {
+                    alignWithLabel: true
+                },
+                axisLine: {
+                    onZero: false,
+                    lineStyle: {
+                        color: colors[1]
+                    }
+                },
+                axisPointer: {
+                    label: {
+                        formatter: function (params) {
+                            return '销售量  ' + params.value
+                                + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                        }
+                    }
+                },
+                data: ["2017-1", "2017-2", "2017-3", "2017-4", "2017-5", "2017-6", "2017-7", "2017-8", "2017-9", "2017-10", "2017-11", "2017-12"]
+            },
+            {
+                type: 'category',
+                axisTick: {
+                    alignWithLabel: true
+                },
+                axisLine: {
+                    onZero: false,
+                    lineStyle: {
+                        color: colors[0]
+                    }
+                },
+                axisPointer: {
+                    label: {
+                        formatter: function (params) {
+                            return '销售量  ' + params.value
+                                + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                        }
+                    }
+                },
+                data: ["2018-1", "2018-2", "2018-3", "2018-4", "2018-5", "2018-6", "2018-7", "2018-8", "2018-9", "2018-10", "2018-11", "2018-12"]
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                axisLine: {
+                    onZero: false,
+                    lineStyle: {
+                        color: '#fff'
+                    }
+                },
+            }
+        ],
+        series: [
+            {
+                name: '2018 销售量',
+                type: 'line',
+                xAxisIndex: 1,
+                smooth: true,
+                data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+            },
+            {
+                name: '2017 销售量',
+                type: 'line',
+                smooth: true,
+                data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7]
+            }
+        ]
+    };
+    //显示
     myChart3.setOption(option3);
-    
-	//当浏览器大小发生改变时，图表自动改变高度
-    window.addEventListener("resize",function() {
-		myChart.resize();
-		myChart1.resize();
-		myChart2.resize();
-		myChart3.resize();
-	});
+
+    //当浏览器大小发生改变时，图表自动改变高度
+    window.addEventListener("resize", function () {
+        myChart.resize();
+        myChart1.resize();
+        myChart2.resize();
+        myChart3.resize();
+    });
 });
- 

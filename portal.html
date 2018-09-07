@@ -12,16 +12,20 @@
     <script src="js/mmap.js"></script>
     <!--显示时钟函数-->
     <script src="js/saleMap.js"></script>
+    <script src="js/canvas.js"></script>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/index.css">
+
+   
 </head>
 
 <body>
     <div class="main-box" id="fullscreen">
+        <canvas id="myCanvas"></canvas>
         <div class="left">
             <div class="rank-box">
                 <table class="rank-table">
-                    <caption class="rank-title">出货 TOP 5</caption>
+                    <caption class="rank-title">1出货 TOP 5</caption>
                     <tr class="rank-row">
                         <td class="sequence top-one">1</td>
                         <td class="name-box">
@@ -77,7 +81,7 @@
             </div>
             <div class="rank-box">
                 <table class="rank-table">
-                    <caption class="rank-title">出货 TOP 5</caption>
+                    <caption class="rank-title">2出货 TOP 5</caption>
                     <tr class="rank-row">
                         <td class="sequence top-one">1</td>
                         <td class="name-box">
@@ -127,22 +131,13 @@
                         </td>
                         <td class="amount">12533</td>
                     </tr>
-                    <tr class="rank-row">
-                        <td class="sequence">6</td>
-                        <td class="name-box">
-                            <span class="name">
-                                Zoey Ferry
-                            </span>
-                            <span class="full-name"> Zoey Ferry</span>
-                        </td>
-                        <td class="amount">7746</td>
-                    </tr>
+                    
 
                 </table>
             </div>
             <div class="rank-box">
                 <table class="rank-table">
-                    <caption class="rank-title">出货 TOP 5</caption>
+                    <caption class="rank-title">3出货 TOP 5</caption>
                     <tr class="rank-row">
                         <td class="sequence top-one">1</td>
                         <td class="name-box">
@@ -198,9 +193,29 @@
             </div>
         </div>
         <div class="right">
-            <div class="charts-box" id="main1"></div>
-            <div class="charts-box" id="main2"></div>
-            <div class="charts-box" id="main3"></div>
+            <div class="charts-box" >
+                <h4 class="chart-title">
+                    本周销售情况
+                </h4>
+                <div class="chart" id="main1"> 
+
+                </div>
+            </div>
+            <div class="charts-box" >
+                <h4 class="chart-title">
+                    今日销售情况
+                </h4>
+                <div class="chart" id="main2"> 
+
+                </div>
+            </div><div class="charts-box" >
+                <h4 class="chart-title">
+                    本周支付方式分布
+                </h4>
+                <div class="chart" id="main3"> 
+
+                </div>
+            </div> 
             <div class="switch-box" id="switch-box">
                 <span class="imply-txt" id="imply-txt">进入全屏</span>
                 <a href="#" id="screen-switch" class="fscreen-open"> </a>
@@ -222,19 +237,20 @@
                         <h3 class="summary-title">本月销售量</h3>
                         <p><span>120万</span><span class="unit">件</span></p>
                         <h3 class="summary-title">本月销售额</h3>
-                        <p><span>1000000</span><span class="unit">元</span></p>
+                        <p><span class="unit">￥</span><span>1000000</span></p>
                     </div>
                     <div class="sales-bd">
                         <h3 class="summary-title">今日销售量</h3>
                         <p><span>120万</span><span class="unit">件</span></p>
                         <h3 class="summary-title">今日销售额</h3>
-                        <p><span>1000000</span><span class="unit">元</span></p>
+                        <p><span class="unit">￥</span><span>4,000</span></p>
                     </div>
                 </div>
             </div>
             <div class="m-bottom" id="main"></div>
         </div>
+        
     </div>
-</body>
+</body> 
 
 </html>
