@@ -213,29 +213,6 @@ $(function () {
     { name: '武汉', value: 60 },
     { name: '南宁', value: 60 },
     { name: '福州' }];
-
-    function formtGCData(geoData, data, srcNam, dest) {
-        var tGeoDt = [];
-        if (dest) {
-            for (var i = 0, len = data.length; i < len; i++) {
-                if (srcNam != data[i].name) {
-                    tGeoDt.push({
-                        coords: [geoData[srcNam], geoData[data[i].name]]
-                    });
-                }
-            }
-        } else {
-            for (var i = 0, len = data.length; i < len; i++) {
-                if (srcNam != data[i].name) {
-                    tGeoDt.push({
-                        coords: [geoData[data[i].name], geoData[srcNam]]
-                    });
-                }
-            }
-        }
-        return tGeoDt;
-    }
-
     function formtVData(geoData, data, srcNam) {
         var tGeoDt = [];
         for (var i = 0, len = data.length; i < len; i++) {
@@ -261,8 +238,6 @@ $(function () {
         });
         return tGeoDt;
     }
-
-    var planePath = 'arrow';
     option = {
         backgroundColor: 'transport',
         //标题设置
@@ -317,7 +292,7 @@ $(function () {
                 },
                 emphasis: {
                     //show要设置成false才能设置高亮部分的颜色
-                    show: true,
+                    show: false,
                     areaColor: 'rgb(20,37, 54)',
                     borderColor: 'rgb(100, 200, 255)', 
                     shadowBlur: 0
@@ -362,7 +337,7 @@ $(function () {
         legend: {
             data: ['销量'],
             textStyle: {
-                color: '#fff'
+                color: 'rgb(253,249,153)'
             }
         },
         xAxis: {
@@ -370,26 +345,34 @@ $(function () {
             //不自动隐藏横坐标名
             axisLine: {
                 lineStyle: {
-                    color: '#fff'
+                    color: '#333'
                 }
             },
             axisLabel: {
                 interval: 0,
                 textStyle: {
-                    color: '#fff'
+                    color:'rgb(170,255,255)',
                 }
+       
             }
         },
         yAxis: {
+            name:"单位(件)",
             axisLine: {
                 lineStyle: {
-                    color: '#fff'
+                    color: '#333'
                 }
             },
             axisLabel: {
                 interval: 0,
                 textStyle: {
-                    color: '#fff'
+                    color:'rgb(170,255,255)',
+                }
+            },
+            splitLine:{
+                show:true,
+                lineStyle:{
+                    color:'#333'
                 }
             }
         },
@@ -397,12 +380,15 @@ $(function () {
             name: '销量',
             type: 'bar',
             data: [5, 20, 36, 10, 10, 20],
-            label: {
+            barWidth:20,//柱子宽度
+            itemStyle: {
+                show:true,
                 normal: {
+                    color:'rgb(170,255,255)',
                     textStyle: {
-                        fontSize: 10
+                        fontSize: 10,
                     }
-                }
+                },
             }
         }]
     };
@@ -411,7 +397,7 @@ $(function () {
     //南丁格尔图（饼状图
     var myChart2 = echarts.init(document.getElementById('main2'))
     option2 = {
-        backgroundColor: 'transport',
+        backgroundColor: 'transparent',
         series: [
             {
                 name: '访问来源',
@@ -452,7 +438,6 @@ $(function () {
         ]
     };
     myChart2.setOption(option2);
-
     //折线图
     var myChart3 = echarts.init(document.getElementById('main3'))
     var colors = ['#aaffff','#3f92d2', '#d14a61', '#5793f3'];
@@ -471,6 +456,7 @@ $(function () {
             }
         },
         grid: {
+            show:true,
             top: 80,
             bottom: 50
         },
@@ -483,7 +469,12 @@ $(function () {
                 axisLine: {
                     onZero: false,
                     lineStyle: {
-                        color: colors[1]
+                        // color: colors[1]
+                    }
+                },
+                axisLabel:{
+                    textStyle:{
+                        color:colors[1]
                     }
                 },
                 axisPointer: {
@@ -494,6 +485,13 @@ $(function () {
                         }
                     }
                 },
+                //网格内的分割线
+                // splitLine:{
+                //     show:true,
+                //     lineStyle:{
+                //         color:'#333'
+                //     }
+                // },
                 data: ["2017-1", "2017-2", "2017-3", "2017-4", "2017-5", "2017-6", "2017-7", "2017-8", "2017-9", "2017-10", "2017-11", "2017-12"]
             },
             {
@@ -504,7 +502,12 @@ $(function () {
                 axisLine: {
                     onZero: false,
                     lineStyle: {
-                        color: colors[0]
+                        color: '#333'
+                    }
+                },
+                axisLabel:{
+                    textStyle:{
+                        color:colors[0]
                     }
                 },
                 axisPointer: {
@@ -524,23 +527,37 @@ $(function () {
                 axisLine: {
                     onZero: false,
                     lineStyle: {
-                        color: '#fff'
+                        color: '#333'
                     }
                 },
+                axisLabel:{
+                    textStyle:{
+                        color:'#fff'
+                    },
+                     
+                },
+                //网格内的分割线
+                splitLine:{
+                    show:true,
+                    lineStyle:{
+                        color:'#333'
+                    }
+                }
             }
         ],
         series: [
             {
                 name: '2018 销售量',
                 type: 'line',
+                
                 xAxisIndex: 1,
-                smooth: true,
+                // smooth: true,
                 data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
             },
             {
                 name: '2017 销售量',
                 type: 'line',
-                smooth: true,
+                // smooth: true,
                 data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7]
             }
         ]
