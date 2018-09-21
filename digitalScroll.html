@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 24px;
+            overflow: hidden;
+            border: 1px solid grey;
+        }
+
+        .digital-col {
+            position: relative;
+            float: left;
+            width: 14px;
+            text-align: center;
+            line-height: 24px;
+        }
+
+        .digital-col span {
+            border-right: 1px solid slateblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+</body>
+<script src="./js/jquery-1.7.2.min.js"></script>
+<script>
+    function init(num) {
+        console.log(`============scroll(${num})==================`);
+        var arr;
+        arr = numToArray(num);
+        var len = arr.length;
+        var str = '';
+        var colStr = `<div class="digital-col">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+        </div>`;
+        var dotStr = `<span>.</span>`;
+        var box = document.getElementsByClassName('box')[0];
+        var oCols;
+        for (var i = 0; i < len; i++) {
+            str += colStr;
+        }
+        box.innerHTML = str;
+        //产生滚动动画 
+        genScroll(arr);
+    }
+    //产生滚动动画
+    function genScroll(arr) {
+        var height = 24;
+        for (var i = 0; i < $('.digital-col').length; i++) {
+            //TODO:处理小数点。小数点不滚动
+            var top = (-1) * Number(arr[i]) * height + 'px';
+            $('.digital-col').eq(i).animate({
+                top: top
+            });
+        }
+    }
+    function addCol(obj, n) {
+        var str = obj.innerHTML.toString();
+        var colStr = `<div class="digital-col">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+        </div>`;
+        for (var i = 0; i < n; i++) {
+            str = colStr + str;
+        }
+        obj.innerHTML = str;
+    }
+    function update(num) {
+        console.log(`============update(${num})==================`);
+        var arr = numToArray(num);
+        var oCols = document.getElementsByClassName('digital-col');
+        var diff = arr.length - oCols.length;
+        var box = document.getElementsByClassName('box')[0];
+        if (diff > 0)
+            addCol(box, diff);
+        genScroll(arr);
+    }; 
+    var data = 213;
+    setInterval(function () { 
+        update(data++);
+    }, 800); 
+
+    function numToArray(num) {
+        var str = num.toString();
+        return arr = str.split('');
+    }
+</script>
+
+</html>
