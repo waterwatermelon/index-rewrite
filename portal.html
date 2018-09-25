@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,10 +14,11 @@
     <!--显示时钟函数-->
     <script src="js/saleMap.js"></script>
     <script src="js/canvas.js"></script>
+    <script src="js/digitroll.js"></script>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/index.css">
 
-   
+
 </head>
 
 <body>
@@ -76,7 +78,7 @@
                         </td>
                         <td class="amount">12533</td>
                     </tr>
-                 
+
                 </table>
             </div>
             <div class="rank-box">
@@ -131,7 +133,7 @@
                         </td>
                         <td class="amount">12533</td>
                     </tr>
-                    
+
 
                 </table>
             </div>
@@ -193,29 +195,30 @@
             </div>
         </div>
         <div class="right">
-            <div class="charts-box" >
+            <div class="charts-box">
                 <h4 class="chart-title">
                     本周销售情况
                 </h4>
-                <div class="chart" id="main1"> 
+                <div class="chart" id="main1">
 
                 </div>
             </div>
-            <div class="charts-box" >
+            <div class="charts-box">
                 <h4 class="chart-title">
                     今日销售情况
                 </h4>
-                <div class="chart" id="main2"> 
+                <div class="chart" id="main2">
 
                 </div>
-            </div><div class="charts-box" >
+            </div>
+            <div class="charts-box">
                 <h4 class="chart-title">
                     本周支付方式分布
                 </h4>
-                <div class="chart" id="main3"> 
+                <div class="chart" id="main3">
 
                 </div>
-            </div> 
+            </div>
             <div class="switch-box" id="switch-box">
                 <span class="imply-txt" id="imply-txt">进入全屏</span>
                 <a href="#" id="screen-switch" class="fscreen-open"> </a>
@@ -235,22 +238,50 @@
                     </p>
                     <div class="sales-bd">
                         <h3 class="summary-title">本月销售量</h3>
-                        <p><span>120万</span><span class="unit">件</span></p>
+                        <p><span class="unit">件</span><span class="num-scroll" id="num-scroll1"> </span></p>
                         <h3 class="summary-title">本月销售额</h3>
-                        <p><span class="unit">￥</span><span>1000000</span></p>
+                        <p><span class="unit">元</span><span class="num-scroll" id="num-scroll2"> </span></p>
                     </div>
                     <div class="sales-bd">
-                        <h3 class="summary-title">今日销售量</h3>
-                        <p><span>120万</span><span class="unit">件</span></p>
-                        <h3 class="summary-title">今日销售额</h3>
-                        <p><span class="unit">￥</span><span>4,000</span></p>
+                        <h3 class="summary-title">本月销售量</h3>
+                        <p><span class="unit">件</span><span class="num-scroll"> </span></p>
+                        <h3 class="summary-title">本月销售额</h3>
+                        <p><span class="unit">￥</span><span class="num-scroll"> </span></p>
                     </div>
                 </div>
             </div>
             <div class="m-bottom" id="main"></div>
         </div>
-        
+
     </div>
-</body> 
+</body>
+<script>
+    var number1 = 0,
+        number2 = 950.2;
+    //第一个组件
+    var r1 = new DigitRoll({
+        container: '#num-scroll1',
+        number: number1
+    });
+
+    r1.roll(number1);
+   
+    timer1 = setInterval(function () {
+        number1 += parseInt(Math.random() * 50) ;
+        r1.roll(number1);
+        console.log(`整数 = ${number1}`);
+    }, 3000);
+    //第二个组件
+    var r2 = new DigitRoll({
+        container: '#num-scroll2',
+        number: number2
+    });
+    r2.roll(number2);
+    setInterval(function () {
+        number2 += parseInt(Math.random() * 1000) / 1000;
+        r2.roll(number2);
+        console.log(`浮点数 = ${number2}`);
+    }, 3000);
+</script>
 
 </html>

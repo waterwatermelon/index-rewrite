@@ -267,7 +267,7 @@
     float: left;
     width: 50%;
     height: 60%;
-    padding-left:12%;
+    padding-right:12%;
     border-right: 1px solid rgb(32,83,111);
     color: #fff;
 
@@ -279,6 +279,7 @@
 }
 .sales-bd .summary-title
 { 
+    text-align: right;
     font-size: 14px;
     font-size: 0.875rem;
     font-weight: normal; 
@@ -287,24 +288,18 @@
 .sales-bd p
 { 
     position: relative;
+    height: 20px;
     font-size: 20px;
     font-size: 1.25rem;
     color: #dd4035;
     color:rgb(253,249,149);
-    line-height: 20px;
+    overflow: hidden;
 }
-.sales-bd p::after{
-    content: '­­­·';
-    position: absolute;
-    right: -0.5rem;
-    font-size: 48px;
-    font-size: 3rem;
-    color: rgb(253,249,149);
-}
-.sales-bd:nth-of-type(2) p::after{
-    content: ' ';
+.sales-bd .num-scroll{
+    float: right;
 }
 .sales-bd .unit{
+    float: right;
     color: #fff;
     font-size: 1rem;
     font-size: 1rem; 
