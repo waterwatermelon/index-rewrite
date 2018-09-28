@@ -19,13 +19,13 @@
     float: left;
 }
 .middle {
-    height: 98%;
+    height: 100%;
     width: 50%;
+    padding:1.8rem 1rem 0;
     margin-left: 25%;
-    margin-right: 25%;
-    border-left:1px solid rgb(32, 83,111);
-    border-right:1px solid rgb(32, 83,111);
-    padding:0px 16px;
+    margin-right: 25%; 
+    border-left:1px solid rgb(43, 110, 146);
+    border-right:1px solid rgb(43, 110, 146);
 }
 .right {
     height: 100%;
@@ -39,8 +39,7 @@
     width: 90%;
     height: 32%;
     margin: 0px auto 6px;
-    padding: 20px 12%;   
-   
+    padding: 20px 12%;    
 }
 .rank-box:nth-child(3){
     border: 0px;
@@ -53,10 +52,9 @@
     left: 0%;
     width: 100%;
     height: 90%; 
-    border: 1px solid rgb(32,83,111);
+    border: 1px solid rgb(43, 110, 146);
     box-shadow: inset 0px 0px 32px rgba(30, 99, 124, 0.8)
 }
-
 .rank-box .rank-title {
     position: relative;
     width: 70%;
@@ -67,10 +65,10 @@
     font-size: 1.125rem;
     font-weight: normal;
     text-align: center;
-    color: rgb(27, 216, 216);
-    background: rgba(34, 81, 111, 0.5);
-    border-left: 1px solid rgb(32, 83, 111);
-    border-right: 1px solid rgb(32, 83, 111);
+    color: rgb(27, 216, 216); 
+    background: rgba(43, 110, 146, 0.5);
+    border-left: 1px solid rgb(43, 110, 146);
+    border-right: 1px solid rgb(43, 110, 146);
 }
 /* 画竖线*/
 .rank-box .rank-title::before{
@@ -78,14 +76,14 @@
     position: absolute;
     left: -0.5rem;
     font-size: 1rem;
-    color: rgb(32, 83, 111);
+    color: rgb(43, 110, 146);
 }
 .rank-box .rank-title::after{
     content: '|';
     position: absolute;
     right: -0.5rem;
     font-size: 1rem;
-    color: rgb(32, 83, 111);
+    color: rgb(43, 110, 146);
 }
 .rank-table{    
     position: relative;
@@ -166,12 +164,11 @@
 .middle .m-top
 {
     width: 100%;
-    height: 25%;
+    height: 20%;
     margin-bottom: 6px;
     position: relative;
-    border: 1px solid rgb(32,83,111);
+    border: 1px solid rgb(43, 110, 146);
     box-shadow: inset 0px 0px 32px rgba(30, 99, 124, 0.8);
-
 }
 /* 日期 */
 .calendar
@@ -183,7 +180,7 @@
     text-align: center;
     border: 0px;/*兼容easyui的calendar */
     color: #25ffff;
-    border-right: 1px solid rgb(32,83,111);
+    border-right: 1px solid rgb(43, 110, 146);
 
 } 
 .calendar .container
@@ -230,15 +227,11 @@
 {
     position: absolute; 
     top: 6%;
-    left: 0;
-    right: 0;
-    width: 28%;
-    margin: 0 auto;
+    left:calc(50% - 14%);
+    width: 28%; 
     text-align: center;
     font-size: 18px;
     font-size: 1.125rem;
-    height: 24px;
-    height: 1.5rem; 
     line-height: 24px;
     line-height: 1.5rem;
     color: rgb(27, 216, 216);
@@ -259,19 +252,19 @@
 .sales-bd  
 {
     position: absolute;
-    top: 26%;
+    bottom: 0%;
     float: left;
     width: 50%;
     height: 70%;
-    padding-right:12%;
-    border-right: 1px solid rgb(32,83,111);
+    padding-right:2.5rem;
+    border-right: 1px solid rgb(43, 110, 146);
     color: #fff;
 
 }
 .sales-bd:nth-of-type(2)
 {
     border-right: 0px;
-    left: 50%;
+    right: 0%;
 }
 .sales-bd .summary-title
 { 
@@ -280,18 +273,16 @@
     font-size: 14px;
     font-size: 0.875rem;
     font-weight: normal; 
-    color: #5ef1f8;
-
+    color: #5ef1f8; 
 }
 .sales-bd p
 { 
     position: relative;
-    height: 20%;
+    height:  1.5rem;
+    line-height: 1.25rem;
     font-size: 20px;
-    font-size: 1.5rem;
-    color: #dd4035;
-    color:rgb(253,249,149);
-    overflow: hidden;
+    font-size: 1.25rem; 
+    color:rgb(253,249,149);  
 }
 .sales-bd .num-scroll{
     float: right;
@@ -299,12 +290,12 @@
 .sales-bd .unit{
     float: right;
     color: #fff;
-    font-size: 1.2rem; 
+    font-size: 1rem; 
 }
 .middle .m-bottom
 {   
     width: 100%;
-    height: 72%;
+    height: 75%;
 }
 /* 右边图表盒子 */
 .right .charts-box
@@ -322,8 +313,8 @@
     position: absolute;
     top: 1.8rem;
     width: 100%;
-    height: 93%; 
-    border: 1px solid rgb(32,83,111);
+    height: 93%;  
+    border: 1px solid rgb(43, 110, 146);
     box-shadow: inset 0px 0px 32px rgba(30, 99, 124, 0.8)
 }
 .charts-box .chart-title{
@@ -338,7 +329,7 @@
     font-weight: normal;
     text-align: center;
     color: rgb(27, 216, 216);
-    background: rgba(34, 81, 111, 0.5);
+    background: rgba(43, 110, 146, 0.5);
     border-left: 1px solid rgb(32, 83, 111);
     border-right: 1px solid rgb(32, 83, 111);
 }
@@ -348,14 +339,14 @@
     position: absolute;
     left: -0.5rem;
     font-size: 1rem;
-    color: rgb(32, 83, 111);
+    color: rgb(43, 110, 146);
 }
 .charts-box .chart-title::after{
     content: '|';
     position: absolute;
     right: -0.5rem;
     font-size: 1rem;
-    color: rgb(32, 83, 111);
+    color: rgb(43, 110, 146);
 }
 .charts-box .chart {
     width: 100%;
