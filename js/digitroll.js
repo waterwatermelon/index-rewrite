@@ -98,9 +98,9 @@ DigitRoll.prototype = {
         var str = '';
         for (var i = 0; i < n; i++) {
             if (this.number[i] == '.') {
-                str += '<div class="num" style="float:left;height:100%;line-height:' + this.rollHeight + 'px"><div>.</div></div>';
+                str += '<div class="num" style="float:left;margin-right:2px;height:100%;line-height:' + this.rollHeight + 'px"><div>.</div></div>';
             } else {
-                str += '<div class="num" style="float:left;height:100%;line-height:' + this.rollHeight + 'px"><div>0</div></div>';
+                str += '<div class="num" style="float:left;margin-right:2px;height:100%;line-height:' + this.rollHeight + 'px"><div>0</div></div>';
             }
         }
         this.container.innerHTML = str;
