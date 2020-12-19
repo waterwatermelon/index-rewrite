@@ -78,7 +78,7 @@ $(function () {
         balls.splice(0, balls.length);
         canvas.width = document.documentElement.clientWidth;
         canvas.height = document.documentElement.clientHeight;
-        // 屏幕变小，减少星点数量
+        // 屏幕变小，减少点的数量
         for (var i = 0; i < N ; i++) {
             var ball = new Ball();
             balls.push(ball);
